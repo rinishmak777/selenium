@@ -1,0 +1,43 @@
+package packg;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class Wappalyzer
+{
+WebDriver driver;
+@Before
+public void setup()
+{
+	WebDriverManager.chromedriver().setup();
+	driver= new ChromeDriver();
+}
+@Test
+public void elementLocate()
+
+{
+	
+	driver.get("https://www.wappalyzer.com/");
+	driver.manage().window().maximize();
+	driver.findElement(By.xpath("//*[@id=\"app\"]/div/main/div/div[1]/header/div/div/div/div[2]/button[2]/span")).click();
+	driver.findElement(By.xpath("//*[@id=\"list-item-49\"]/div")).click();
+driver.findElement(By.xpath("//*[@id=\"app\"]/div/main/div/div[2]/div[2]/div/div[2]/div[2]/div/div/div/div/div[1]/div[1]")).sendKeys("CreateJS");
+driver.findElement(By.xpath("//*[@id=\"app\"]/div/main/div/div[2]/div[1]/div[2]/div[3]/div/div/a/span")).click();
+
+}
+
+
+@After
+public void browserClose()
+{
+	driver.quit();
+
+}
+}
+
